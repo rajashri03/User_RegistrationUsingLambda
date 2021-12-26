@@ -37,5 +37,32 @@ namespace UserRegistration_CustomException
             }
             return fname;
         }
+        public string LastNameMatch(string lname)
+        {
+            string Lastname = @"[A-Z]{1}[a-z]{2}$";
+
+            Regex rg = new Regex(Lastname);
+
+            try
+            {
+                if (lname.Equals(string.Empty))
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.LAST_NAME, "Last Name Should not be empty");
+                }
+                if (rg.IsMatch(lname))
+                {
+                    Console.Write("Last Name is Valid");
+                }
+                else
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.INVALID_LASTNAME, "Plase Enter First Letter Capital and Length of the last name upto 3 only");
+                }
+            }
+            catch (RegexCustomException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return lname;
+        }
     }
 }

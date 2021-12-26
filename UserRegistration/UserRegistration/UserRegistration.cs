@@ -24,7 +24,7 @@ namespace UserRegistration_CustomException
                 }
                 if (rg.IsMatch(fname))
                 {
-                    Console.Write("Name is Valid");
+                    return "Name is Valid";
                 }
                 else
                 {
@@ -51,7 +51,7 @@ namespace UserRegistration_CustomException
                 }
                 if (rg.IsMatch(lname))
                 {
-                    Console.Write("Last Name is Valid");
+                    return "Last Name is valid";
                 }
                 else
                 {
@@ -78,7 +78,7 @@ namespace UserRegistration_CustomException
                 }
                 if (rg.IsMatch(email))
                 {
-                    Console.Write("Email is Valid");
+                    return "Email is Valid";
                 }
                 else
                 {
@@ -90,6 +90,33 @@ namespace UserRegistration_CustomException
                 Console.WriteLine(e.Message);
             }
             return email;
+        }
+        public string PhoneMatch(string phone)
+        {
+            string PHONE = @"^[0-9]{2,4}[ ]{1}[6-9]{1}[0-9]{9}$";
+
+            Regex rg = new Regex(PHONE);
+
+            try
+            {
+                if (phone.Equals(string.Empty))
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.EMPTY_PHONE, "Phone Should not be empty");
+                }
+                if (rg.IsMatch(phone))
+                {
+                   return "Valid";
+                }
+                else
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.INVALID_PHONE, "Plase Enter Valid Phone Number (eg 91 9876543210)");
+                }
+            }
+            catch (RegexCustomException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return phone;
         }
     }
 }

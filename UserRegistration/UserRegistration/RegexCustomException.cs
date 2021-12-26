@@ -13,6 +13,7 @@ namespace UserRegistration_CustomException
             EMPTY_NAME, INVALID_NAME,
             LAST_NAME,INVALID_LASTNAME,
             EMAIL,INVALID_EMAIL,
+            EMPTY_PHONE,INVALID_PHONE,
 
 
         }

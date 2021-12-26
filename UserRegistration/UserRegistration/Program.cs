@@ -3,7 +3,7 @@ bool status = true;
 UserRegistration user = new UserRegistration();
 while (status)
 {
-    Console.WriteLine("Select:\n1)FirstName\n2)LastName\n3)Email");
+    Console.WriteLine("Select:\n1)FirstName\n2)LastName\n3)Email\n4)PhoneNumber");
     int op = Convert.ToInt32(Console.ReadLine());
     switch(op)
     {
@@ -27,6 +27,13 @@ while (status)
             string email = Console.ReadLine();
             string emailresult = user.EmailMatch(email);
             Console.WriteLine($"\n{emailresult}");
+            break;
+        case 4:
+            //Check Email is valid or not
+            Console.WriteLine("Enter PhoneNumber(eg.91 8888877655)");
+            string phone = Console.ReadLine();
+            string phoneresult = user.PhoneMatch(phone);
+            Console.WriteLine($"\n{phoneresult}");
             break;
     }
 }

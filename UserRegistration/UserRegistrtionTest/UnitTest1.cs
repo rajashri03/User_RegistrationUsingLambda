@@ -16,7 +16,7 @@ namespace UserRegistrtionTest
             //Act
             string actual=user.FirstNameMatch("Raj");
             //Assert
-            Assert.AreEqual("Raj", actual);
+            Assert.AreEqual("Name is Valid", actual);
         }
         /// <summary>
         /// Method to check last name is valid or not
@@ -27,7 +27,7 @@ namespace UserRegistrtionTest
             //Act
             string actual = user.LastNameMatch("Mane");
             //Assert
-            Assert.AreEqual("Mane", actual);
+            Assert.AreEqual("Last Name is valid", actual);
         }
         /// <summary>
         /// Method to check email is valid or not
@@ -38,7 +38,18 @@ namespace UserRegistrtionTest
             //Act
             string actual = user.EmailMatch("abc.xyz@gmail.com");
             //Assert
-            Assert.AreEqual("abc.xyz@gmail.com", actual);
+            Assert.AreEqual("Email is Valid", actual);
+        }
+        /// <summary>
+        /// Method to check Phone Number is valid or not
+        /// </summary>
+        [TestMethod]
+        public void PhoneShouldbeValid()
+        {
+            //Act
+            string actual = user.PhoneMatch("91 8898767890");
+            //Assert
+            Assert.AreEqual("Valid", actual);
         }
     }
 }

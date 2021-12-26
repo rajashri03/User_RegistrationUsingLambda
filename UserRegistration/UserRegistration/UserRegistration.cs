@@ -64,5 +64,32 @@ namespace UserRegistration_CustomException
             }
             return lname;
         }
+        public string EmailMatch(string email)
+        {
+            string EMAIL = @"^[a-zA-Z0-9]+.[a-zA-Z0-9]+@[A-Za-z0-9]+.[a-zA-Z]{2,3}(.[a-zA-Z]{2})?$";
+
+            Regex rg = new Regex(EMAIL);
+
+            try
+            {
+                if (email.Equals(string.Empty))
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.EMAIL, "Email Should not be empty");
+                }
+                if (rg.IsMatch(email))
+                {
+                    Console.Write("Email is Valid");
+                }
+                else
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.INVALID_EMAIL, "Plase Enter Valid Email Address");
+                }
+            }
+            catch (RegexCustomException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return email;
+        }
     }
 }

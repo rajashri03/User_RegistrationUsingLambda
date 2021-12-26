@@ -10,7 +10,10 @@ namespace UserRegistration_CustomException
     {
         public enum Validation
         {
-            EMPTY_NAME, INVALID_NAME,LAST_NAME,INVALID_LASTNAME
+            EMPTY_NAME, INVALID_NAME,
+            LAST_NAME,INVALID_LASTNAME,
+            EMAIL,INVALID_EMAIL,
+
 
         }
         public readonly Validation type;

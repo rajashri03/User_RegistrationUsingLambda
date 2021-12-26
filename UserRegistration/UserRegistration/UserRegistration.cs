@@ -9,7 +9,11 @@ namespace UserRegistration_CustomException
 {
     public class UserRegistration
     {
-       
+       /// <summary>
+       /// Method to Check name is valid or not
+       /// </summary>
+       /// <param name="fname"></param>
+       /// <returns></returns>
         public string FirstNameMatch(string fname)
         {
             string Firstname = @"[A-Z]{1}[a-z]{2}$";
@@ -37,6 +41,11 @@ namespace UserRegistration_CustomException
             }
             return fname;
         }
+        /// <summary>
+        /// Method to check last name is valid or not
+        /// </summary>
+        /// <param name="lname"></param>
+        /// <returns></returns>
         public string LastNameMatch(string lname)
         {
             string Lastname = @"[A-Z]{1}[a-z]{2}$";
@@ -64,6 +73,11 @@ namespace UserRegistration_CustomException
             }
             return lname;
         }
+        /// <summary>
+        /// Method to check email address is valid or not
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public string EmailMatch(string email)
         {
             string EMAIL = @"^[a-zA-Z0-9]+.[a-zA-Z0-9]+@[A-Za-z0-9]+.[a-zA-Z]{2,3}(.[a-zA-Z]{2})?$";
@@ -91,6 +105,11 @@ namespace UserRegistration_CustomException
             }
             return email;
         }
+        /// <summary>
+        /// Method to check Phoner Number is valid or not
+        /// </summary>
+        /// <param name="phone"></param>
+        /// <returns></returns>
         public string PhoneMatch(string phone)
         {
             string PHONE = @"^[0-9]{2,4}[ ]{1}[6-9]{1}[0-9]{9}$";
@@ -117,6 +136,70 @@ namespace UserRegistration_CustomException
                 Console.WriteLine(e.Message);
             }
             return phone;
+        }
+        /// <summary>
+        /// Method -Password Rule 1-Enter Minimum 8 characters
+        /// </summary>
+        /// <param name="Password1"></param>
+        /// <returns></returns>
+        public string PasswordRule1Match(string Password1)
+        {
+            string PASSWORD1 = @"^[0-9a-z]{8}$";
+
+            Regex rg = new Regex(PASSWORD1);
+
+            try
+            {
+                if (Password1.Equals(string.Empty))
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.EMPTY_PASSWORD1, "Password Should not be empty");
+                }
+                if (rg.IsMatch(Password1))
+                {
+                    return "Password Validate";
+                }
+                else
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.INVALID_PASSWORD1, "Plase Enter valid password(minimum 8 character)");
+                }
+            }
+            catch (RegexCustomException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return Password1;
+        }
+        /// <summary>
+        /// Method -Password Rule 2-Enter Minimum 8 characters and should have at least one upper case
+        /// </summary>
+        /// <param name="Password2"></param>
+        /// <returns></returns>
+        public string PasswordRule2Match(string Password2)
+        {
+            string PASSWORD2 = @"^(?=.*[A-Z])(?=.*[0-9])[0-9a-zA-z]{8}$";
+
+            Regex rg = new Regex(PASSWORD2);
+
+            try
+            {
+                if (Password2.Equals(string.Empty))
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.EMPTY_PASSWORD2, "Password Should not be empty");
+                }
+                if (rg.IsMatch(Password2))
+                {
+                    return "Password Validate";
+                }
+                else
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.INVALID_PASSWORD2, "Plase Enter valid password(minimum 8 character and should have at least one upper case)");
+                }
+            }
+            catch (RegexCustomException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return Password2;
         }
     }
 }

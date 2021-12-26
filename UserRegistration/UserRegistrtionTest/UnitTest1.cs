@@ -25,7 +25,7 @@ namespace UserRegistrtionTest
         public void LastNameShouldbeMatch()
         {
             //Act
-            string actual = user.LastNameMatch("Mane");
+            string actual = user.LastNameMatch("Mae");
             //Assert
             Assert.AreEqual("Last Name is valid", actual);
         }
@@ -50,6 +50,28 @@ namespace UserRegistrtionTest
             string actual = user.PhoneMatch("91 8898767890");
             //Assert
             Assert.AreEqual("Valid", actual);
+        }
+        /// <summary>
+        /// Method to check password rule 1 is matched or not(minimum 8 character)
+        /// </summary>
+        [TestMethod]
+        public void PasswordRule1ShouldbeMatch()
+        {
+            //Act
+            string actual = user.PasswordRule1Match("rajas524");
+            //Assert
+            Assert.AreEqual("Password Validate", actual);
+        }
+        /// <summary>
+        /// Method to check password rule 2 is matched or not(minimum 8 character and one uppercase letter)
+        /// </summary>
+        [TestMethod]
+        public void PasswordRule2ShouldbeMatch()
+        {
+            //Act
+            string actual = user.PasswordRule2Match("Rajas524");
+            //Assert
+            Assert.AreEqual("Password Validate", actual);
         }
     }
 }

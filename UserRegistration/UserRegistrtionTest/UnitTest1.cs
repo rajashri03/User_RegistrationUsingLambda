@@ -73,5 +73,16 @@ namespace UserRegistrtionTest
             //Assert
             Assert.AreEqual("Password Validate", actual);
         }
+        /// <summary>
+        /// Method to check password rule 2 is matched or not(minimum 8 character and one uppercase letter and one special character)
+        /// </summary>
+        [TestMethod]
+        public void PasswordRule3ShouldbeMatch()
+        {
+            //Act
+            string actual = user.PasswordRule3Match("Rajas@24");
+            //Assert
+            Assert.AreEqual("Password Validate", actual);
+        }
     }
 }

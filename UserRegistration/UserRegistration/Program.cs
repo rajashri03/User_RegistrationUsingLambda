@@ -3,7 +3,7 @@ bool status = true;
 UserRegistration user = new UserRegistration();
 while (status)
 {
-    Console.WriteLine("Select:\n1)FirstName\n2)LastName\n3)Email\n4)PhoneNumber\n5)PasswordRule1\n6)Password Rule2\n");
+    Console.WriteLine("Select:\n1)FirstName\n2)LastName\n3)Email\n4)PhoneNumber\n5)PasswordRule1\n6)Password Rule2\n7)Password rule 3");
     int op = Convert.ToInt32(Console.ReadLine());
     switch(op)
     {
@@ -43,11 +43,18 @@ while (status)
             Console.WriteLine($"\n{password1result}");
             break;
         case 6:
-            //Check Password Rule2 -Enter minimum 8 characters
+            //Check Password Rule2 -Enter minimum 8 characters and one uppercase letter
             Console.WriteLine("Enter Password(Minimum 8 characters and one uppercase letter)");
             string password2 = Console.ReadLine();
             string password1result2 = user.PasswordRule2Match(password2);
             Console.WriteLine($"\n{password1result2}");
+            break;
+        case 7:
+            //Check Password Rule2 -Enter minimum 8 characters and one uppercase and one special character
+            Console.WriteLine("Enter Password(Minimum 8 characters and one uppercase letter)");
+            string password3 = Console.ReadLine();
+            string password1result3 = user.PasswordRule3Match(password3);
+            Console.WriteLine($"\n{password1result3}");
             break;
     }
 }

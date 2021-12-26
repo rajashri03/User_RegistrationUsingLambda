@@ -152,7 +152,7 @@ namespace UserRegistration_CustomException
             {
                 if (Password1.Equals(string.Empty))
                 {
-                    throw new RegexCustomException(RegexCustomException.Validation.EMPTY_PASSWORD1, "Password Should not be empty");
+                    throw new RegexCustomException(RegexCustomException.Validation.EMPTY_PASSWORD, "Password Should not be empty");
                 }
                 if (rg.IsMatch(Password1))
                 {
@@ -184,7 +184,7 @@ namespace UserRegistration_CustomException
             {
                 if (Password2.Equals(string.Empty))
                 {
-                    throw new RegexCustomException(RegexCustomException.Validation.EMPTY_PASSWORD2, "Password Should not be empty");
+                    throw new RegexCustomException(RegexCustomException.Validation.EMPTY_PASSWORD, "Password Should not be empty");
                 }
                 if (rg.IsMatch(Password2))
                 {
@@ -200,6 +200,38 @@ namespace UserRegistration_CustomException
                 Console.WriteLine(e.Message);
             }
             return Password2;
+        }
+         /// <summary>
+        /// Method -Password Rule 2-Enter Minimum 8 characters and should have at least one special Character
+        /// </summary>
+        /// <param name="Password2"></param>
+        /// <returns></returns>
+        public string PasswordRule3Match(string Password3)
+        {
+            string PASSWORD3 = "(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+=-])[a-zA-Z0-9!@#$%^&*()_+=-]{8}$";
+
+            Regex rg = new Regex(PASSWORD3);
+
+            try
+            {
+                if (Password3.Equals(string.Empty))
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.EMPTY_PASSWORD, "Password Should not be empty");
+                }
+                if (rg.IsMatch(Password3))
+                {
+                    return "Password Validate";
+                }
+                else
+                {
+                    throw new RegexCustomException(RegexCustomException.Validation.INVALID_PASSWORD3, "Plase Enter valid password(Should have at least one special Character)");
+                }
+            }
+            catch (RegexCustomException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return Password3;
         }
     }
 }
